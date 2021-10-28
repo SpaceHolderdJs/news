@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/layout/Header";
+import Main from "./components/Main";
+import News from "./components/News";
+
+import { useSelector } from "react-redux";
+
+import "./App.scss";
 
 function App() {
+  const tab = useSelector((store) => store.tab);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App column">
+      <Header />
+      {tab === "main" && <Main />}
+      {tab === "news" && <News />}
     </div>
   );
 }
